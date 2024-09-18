@@ -1,4 +1,4 @@
-import {AbstractProvider} from "@/lib/AbstractProvider";
+import {AbstractProvider} from "@/tree/lib/AbstractProvider";
 
 /**
  * Custom provider to parse source tree list
@@ -6,15 +6,23 @@ import {AbstractProvider} from "@/lib/AbstractProvider";
 export class ListProvider extends AbstractProvider {
 
 	/**
-	 * Transform original node to a compatible node with tree component
-	 * @param {Object} node original node from source
-	 * @return {Object}
+	 * @inheritDoc
 	 */
-	static transform(node) {
-		return {
-			[AbstractProvider.ID]: node.id,
-			[AbstractProvider.PARENT]: node.id_parent,
-			[AbstractProvider.TITLE]: node.title
-		};
+	getId(node) {
+		return node.id;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	getParent(node) {
+		return node.id_parent;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	getTitle(node) {
+		return node.title;
 	}
 }

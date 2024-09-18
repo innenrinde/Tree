@@ -1,5 +1,15 @@
 export const treeData = [
 	{
+		id: 5,
+		id_parent: 4,
+		title: "E class",
+	},
+	{
+		id: 3,
+		id_parent: 0,
+		title: "American cars",
+	},
+	{
 		id: 1,
 		id_parent: 0,
 		title: "European cars",
@@ -9,20 +19,11 @@ export const treeData = [
 		id_parent: 0,
 		title: "Asian cars",
 	},
-	{
-		id: 3,
-		id_parent: 0,
-		title: "American cars",
-	},
+
 	{
 		id: 4,
 		id_parent: 1,
 		title: "Mercedes",
-	},
-	{
-		id: 5,
-		id_parent: 4,
-		title: "E class",
 	},
 	{
 		id: 13,
@@ -123,10 +124,5 @@ export const treeData = [
 		id: 26,
 		id_parent: 3,
 		title: "Ford",
-	},
-	{
-		id: 25,
-		id_parent: 3,
-		title: "Lincoln",
-	},
+	}
 ]

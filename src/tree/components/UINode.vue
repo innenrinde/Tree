@@ -22,23 +22,31 @@
 				@change="onCheckNode"
 			/>
 
-			{{ node.title }}
+			<span
+				class="title"
+				@click="displayChildren"
+			>
+				{{ node.title }}
+			</span>
 
 		</div>
 
-		<u-i-node
-			v-show="collapse"
-			v-for="child in node.children"
-			:key="child.id"
-			:node="child"
-			:checked="checkedChildren[child.id]"
-			@check="onCheckChild"
-		/>
+		<div
+			v-if="collapse"
+		>
+			<u-i-node
+				v-for="child in node.children"
+				:key="child.id"
+				:node="child"
+				:checked="checkedChildren[child.id]"
+				@check="onCheckChild"
+			/>
+		</div>
 	</div>
 </template>
 
 <script>
-import {Node} from "@/models/Node";
+import {Node} from "@/tree/models/Node";
 
 export default {
 	name: "UINode",
@@ -65,6 +73,7 @@ export default {
 		}
 	},
 	mounted() {
+		this.collapse = this.node.parent.id === 0;
 		this.checkedNode = this.checked;
 		this.checkChildren(this.checkedNode);
 	},
@@ -141,6 +150,16 @@ export default {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+
+.label .title {
+	cursor: pointer;
+	padding: 2px 5px 2px 5px;
+}
+
+.label .title:hover {
+	background-color: #bde9fa;
+	border-radius: 5px;
 }
 
 .arrow-right, .arrow-bottom {

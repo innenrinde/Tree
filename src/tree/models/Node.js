@@ -1,17 +1,17 @@
-import {AbstractProvider} from "@/lib/AbstractProvider";
+// import {AbstractProvider} from "@/lib/AbstractProvider";
 
 /**
  * Tree node mapping
  */
 export class Node {
 
-	constructor(data) {
+	constructor(id, title) {
 
 		// unique node id
-		this.id = data[AbstractProvider.ID] ?? null;
+		this.id = id;
 
 		// node title
-		this.title = data[AbstractProvider.TITLE] ?? "";
+		this.title = title;
 
 		// ref to parent node
 		this.parent = null;
